@@ -16,10 +16,10 @@
 
 export const SITE_URL = 'https://demo.vercel.events';
 export const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN || new URL(SITE_URL).origin;
-export const TWITTER_USER_NAME = 'vercel';
-export const BRAND_NAME = 'ACME';
-export const SITE_NAME_MULTILINE = ['ACME', 'Conf'];
-export const SITE_NAME = 'ACME Conf';
+export const TWITTER_USER_NAME = 'gophercon';
+export const BRAND_NAME = 'GopherCon';
+export const SITE_NAME_MULTILINE = ['GopherCon', 'Conf'];
+export const SITE_NAME = 'GopherCon';
 export const META_DESCRIPTION =
   'This is an open source demo that Next.js developers can clone, deploy, and fully customize for events. Created through collaboration of marketers, designers, and developers at Vercel.';
 export const SITE_DESCRIPTION =
@@ -36,20 +36,20 @@ export const LEGAL_URL = process.env.NEXT_PUBLIC_PRIVACY_POLICY_URL;
 export const COPYRIGHT_HOLDER = process.env.NEXT_PUBLIC_COPYRIGHT_HOLDER;
 
 export const CODE_OF_CONDUCT =
-  'https://www.notion.so/vercel/Code-of-Conduct-Example-7ddd8d0e9c354bb597a0faed87310a78';
-export const REPO = 'https://github.com/vercel/virtual-event-starter-kit';
+  'https://golang.org/conduct';
+export const REPO = 'https://github.com/gopheracademy/showrunner-online';
 export const SAMPLE_TICKET_NUMBER = 1234;
 export const NAVIGATION = [
   {
-    name: 'Stage A',
+    name: 'Main Theater',
     route: '/stage/a'
   },
   {
-    name: 'Stage C',
+    name: 'Tutorials',
     route: '/stage/c'
   },
   {
-    name: 'Stage M',
+    name: 'Workshops',
     route: '/stage/m'
   },
   {
