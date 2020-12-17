@@ -1,10 +1,10 @@
 {
-  "name": "virtual-event-starter-kit",
-  "description": "Starter kit for your virtual event.",
+  "name": "showrunner-online",
+  "description": "Online presence for GopherCon",
   "private": true,
-  "repository": "vercel/virtual-event-starter-kit",
-  "author": "Vercel Inc.",
-  "homepage": "https://demo.vercel.events",
+  "repository": "gopheracademy/showrunner-online",
+  "author": "Gopher Academy, LLC",
+  "homepage": "https://www.gophercon.com",
   "license": "Apache-2.0",
   "engines": {
     "node": "12.x"

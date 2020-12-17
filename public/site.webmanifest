@@ -1,7 +1,7 @@
 {
-  "name": "Virtual Event Starter Kit",
-  "short_name": "Virtual Event Starter Kit",
-  "description": "Virtual Event Starter Kit -> https://demo.vercel.events",
+  "name": "GopherCon",
+  "short_name": "GopherCon",
+  "description": "GopherCon Online -> https://next.gophercon.com",
   "display": "standalone",
   "start_url": "/",
   "theme_color": "#fff",
