@@ -20,7 +20,7 @@ export default function IconLogo({
   ...props
 }) {
   return (
-    <img name="logo-url"
+    <img
          width="180%"
          height="180%"
          src="https://res.cloudinary.com/bizzaboprod/image/upload/c_crop,g_custom,f_auto/v1596657274/pern6ovrtyyg9wctavxz.png"
