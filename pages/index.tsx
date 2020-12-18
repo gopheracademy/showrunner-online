@@ -20,6 +20,8 @@ import { SkipNavContent } from '@reach/skip-nav';
 import Page from '@components/page';
 import ConfContent from '@components/index';
 import { META_DESCRIPTION } from '@lib/constants';
+import { signIn, signOut, useSession } from 'next-auth/client';
+
 
 export default function Conf() {
   const { query } = useRouter();
@@ -27,6 +29,9 @@ export default function Conf() {
     title: 'GopherCon',
     description: META_DESCRIPTION
   };
+
+  // somewhere there are deep links generated to send people back
+  // to this page with their ticket and user id?? find where this happens (TODO)
   const ticketNumber = query.ticketNumber?.toString();
   const defaultUserData = {
     id: query.id?.toString(),
@@ -34,10 +39,18 @@ export default function Conf() {
     name: query.name?.toString(),
     username: query.username?.toString()
   };
-
+  const [session, loading] = useSession()
   return (
     <Page meta={meta} fullViewport>
       <SkipNavContent />
+      {!session && <>
+        Not signed in <br />
+        <button onClick={() => { signIn() }}>Sign in</button>
+      </>}
+      {session && <>
+        Signed in as {session.user.email} <br />
+        <button onClick={() => { signOut() }}>Sign out</button>
+      </>}
       <ConfContent
         defaultUserData={defaultUserData}
         defaultPageState={query.ticketNumber ? 'ticket' : 'registration'}

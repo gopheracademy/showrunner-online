@@ -38,17 +38,17 @@ export default function TicketShare({ username, ticketNumber, name, usernameFrom
 
   const meta = username
     ? {
-        title: `${name}’s ${SITE_NAME} Ticket`,
-        description: META_DESCRIPTION,
-        image: `/api/ticket-images/${username}`,
-        url: `${SITE_URL}/tickets/${username}`
-      }
+      title: `${name}’s ${SITE_NAME} Ticket`,
+      description: META_DESCRIPTION,
+      image: `/api/ticket-images/${username}`,
+      url: `${SITE_URL}/tickets/${username}`
+    }
     : {
-        title: 'Ticket Demo - Virtual Event Starter Kit',
-        description: META_DESCRIPTION,
-        image: `/api/ticket-images/${usernameFromParams}`,
-        url: `${SITE_URL}/tickets/${usernameFromParams}`
-      };
+      title: 'GopherCon Ticket',
+      description: META_DESCRIPTION,
+      image: `/api/ticket-images/${usernameFromParams}`,
+      url: `${SITE_URL}/tickets/${usernameFromParams}`
+    };
 
   return (
     <Page meta={meta}>
