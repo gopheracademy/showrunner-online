@@ -42,15 +42,13 @@ export default function Conf() {
   const [session, loading] = useSession()
   return (
     <Page meta={meta} fullViewport>
-      <SkipNavContent />{typeof window !== 'undefined'
-        && console.log(document.cookie)}
+      <SkipNavContent />
       {!session && <>
         Not signed in <br />
         <button onClick={() => { signIn() }}>Sign in</button>
       </>}
       {session && <>
         Signed in as {session.user.name} <br />
-        {        console.log(session)}
         <button onClick={() => { signOut() }}>Sign out</button>
       </>}
       <ConfContent
