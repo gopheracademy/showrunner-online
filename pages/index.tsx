@@ -49,7 +49,7 @@ export default function Conf() {
       </>}
       {session && <>
         Signed in as {session.user.name} <br />
-        console.log(session.accessToken);
+        {        console.log(session.accessToken)}
         <button onClick={() => { signOut() }}>Sign out</button>
       </>}
       <ConfContent
