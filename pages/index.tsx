@@ -42,7 +42,8 @@ export default function Conf() {
   const [session, loading] = useSession()
   return (
     <Page meta={meta} fullViewport>
-      <SkipNavContent />
+      <SkipNavContent />{typeof window !== 'undefined'
+        && console.log(document.cookie)}
       {!session && <>
         Not signed in <br />
         <button onClick={() => { signIn() }}>Sign in</button>
