@@ -6,7 +6,8 @@ const options = {
     providers: [
         Providers.GitHub({
             clientId: process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID,
-            clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET
+            clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
+            scope: "read:user"
         }),
         // ...add more providers here
     ],
