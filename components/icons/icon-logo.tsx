@@ -24,7 +24,7 @@ export default function IconLogo({
          width="180%"
          height="180%"
          src="https://res.cloudinary.com/bizzaboprod/image/upload/c_crop,g_custom,f_auto/v1596657274/pern6ovrtyyg9wctavxz.png"
-         alt="GopehrCon logo image"
+         alt="GopherCon logo image"
      />
   );
 }
