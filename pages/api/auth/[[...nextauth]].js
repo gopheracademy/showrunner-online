@@ -1,21 +1,16 @@
+export default (req, res) => NextAuth(req, res, options)
 import NextAuth from 'next-auth'
 import Providers from 'next-auth/providers'
 
 const options = {
     // Configure one or more authentication providers
     providers: [
-        Providers.GitHub({
-            clientId: process.env.NEXT_PUBLIC_GITHUB_OAUTH_CLIENT_ID,
-            clientSecret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
-            scope: "read:user"
+        Providers.Okta({
+            clientId: process.env.OKTA_CLIENTID,
+            clientSecret: process.env.OKTA_CLIENTSECRET,
+            domain: process.env.OKTA_DOMAIN
         }),
         // ...add more providers here
     ],
-
     secret: process.env.NEXT_SESSION_SECRET,
-    jwt: {
-        secret: process.env.NEXT_SESSION_SECRET,
-    },
 }
-
-export default (req, res) => NextAuth(req, res, options)
