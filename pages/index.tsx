@@ -40,20 +40,16 @@ export default function Conf() {
     username: query.username?.toString()
   };
   const [session, loading] = useSession()
+
   return (
     <Page meta={meta} fullViewport>
       <SkipNavContent />
-      {!session && <>
-        Not signed in <br />
-        <button onClick={() => { signIn() }}>Sign in</button>
-      </>}
-      {session && <>
-        Signed in as {session.user.name} <br />
-        <button onClick={() => { signOut() }}>Sign out</button>
-      </>}
       <ConfContent
         defaultUserData={defaultUserData}
         defaultPageState={query.ticketNumber ? 'ticket' : 'registration'}
+        passingSignInHandler={() => signIn('okta')}
+        passingSignOutHandler={() => signOut()}
+        userName={ session ? session.user.name : ''}
       />
     </Page>
   );

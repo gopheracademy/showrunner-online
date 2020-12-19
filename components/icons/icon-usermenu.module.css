@@ -1,0 +1,7 @@
+.a,.b,.c,.d,.g{fill:none;}
+.a,.b,.f,.g{stroke-miterlimit:10;}
+.a,.c,.f,.g{stroke-width:6px;}
+.b{stroke-width:5.85px;}
+.c,.d,.g{stroke-linecap:round;}
+.c,.d{stroke-linejoin:round;}
+.d{stroke-width:5.27px;}

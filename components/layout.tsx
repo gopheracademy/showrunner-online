@@ -22,23 +22,27 @@ import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
 import MobileMenu from './mobile-menu';
-import Footer, { HostedByVercel } from './footer';
+import Footer from './footer';
 import ViewSource from '@components/view-source';
+
+import UserMenuModule from './user-menu';
 
 type Props = {
   children: React.ReactNode;
   className?: string;
   hideNav?: boolean;
   layoutStyles?: any;
+  userName?: string;
+  passingSignInHandler?: boolean;
+  passingSignOutHandler?: boolean;
 };
 
-export default function Layout({ children, className, hideNav, layoutStyles }: Props) {
+export default function Layout({ children, className, hideNav, layoutStyles, userName, passingSignInHandler, passingSignOutHandler }: Props) {
   const router = useRouter();
   const activeRoute = router.asPath;
 
   return (
     <>
-      <ViewSource />
       <div className={styles.background}>
         {!hideNav && (
           <header className={cn(styles.header)}>
@@ -65,7 +69,11 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
               ))}
             </div>
             <div className={cn(styles['header-right'])}>
-              <HostedByVercel />
+              <UserMenuModule
+                  username={userName}
+                  signIn={passingSignInHandler}
+                  signOut={passingSignOutHandler}
+              />
             </div>
           </header>
         )}
