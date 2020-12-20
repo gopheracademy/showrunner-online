@@ -22,8 +22,11 @@ import { NAVIGATION } from '@lib/constants';
 import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
 import MobileMenu from './mobile-menu';
-import Footer, { HostedByVercel } from './footer';
+import Footer from './footer';
 import ViewSource from '@components/view-source';
+
+import UserMenuModule from './user-menu';
+import {signIn, signOut, useSession} from "next-auth/client";
 
 type Props = {
   children: React.ReactNode;
@@ -35,10 +38,10 @@ type Props = {
 export default function Layout({ children, className, hideNav, layoutStyles }: Props) {
   const router = useRouter();
   const activeRoute = router.asPath;
+  const [session, loading] = useSession()
 
   return (
     <>
-      <ViewSource />
       <div className={styles.background}>
         {!hideNav && (
           <header className={cn(styles.header)}>
@@ -65,7 +68,11 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
               ))}
             </div>
             <div className={cn(styles['header-right'])}>
-              <HostedByVercel />
+              <UserMenuModule
+                  username={(session === null || session === undefined) ? '' : session.user.name!}
+                  signInHandler={() => signIn('okta')}
+                  signOutHandler={() => signOut()}
+              />
             </div>
           </header>
         )}

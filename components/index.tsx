@@ -32,7 +32,7 @@ type Props = {
 export default function Conf({
   defaultUserData,
   sharePage,
-  defaultPageState = 'registration'
+  defaultPageState = 'registration',
 }: Props) {
   const [userData, setUserData] = useState<UserData>(defaultUserData);
   const [pageState, setPageState] = useState<PageState>(defaultPageState);
@@ -51,7 +51,6 @@ export default function Conf({
             <>
               <Hero />
               <Form />
-              <LearnMore />
             </>
           ) : (
             <Ticket
