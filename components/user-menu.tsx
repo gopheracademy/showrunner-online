@@ -3,28 +3,23 @@ import UserDefaultAvatar from './icons/icon-usermenu';
 import styles from './user-menu.module.css';
 
 type Props = {
-    username?: string;
-    signIn?: boolean;
-    signOut?: boolean;
+    username: string;
+    signInHandler: (event: React.MouseEvent<HTMLElement>) => void;
+    signOutHandler: (event: React.MouseEvent<HTMLElement>) => void;
 };
 
-export default function UserMenuProfile({ name, username, size = 1, signIn, signOut }: Props) {
+export default function UserMenuProfile({ username, signInHandler, signOutHandler }: Props) {
     return (
         <div className={styles.profile}>
             <span
               className={cn(styles.skeleton, styles.wrapper, styles.inline, styles.rounded)}
             >
-            {username ? (
-                <img src={`https://github.com/${username}.png`}
-                     alt={username} className={styles.image} />
-            ) : (
-                <span >
+              <span>
                 <UserDefaultAvatar color={'var(--secondary-color'} height={60}/>
               </span>
-            )}
             </span>
             <div className={styles.text}
-                 onClick={() => { !username ? signIn() : signOut() }}
+                 onClick = {!username ? signInHandler : signOutHandler}
             >
                 <p
                     className={cn(styles.name, {
@@ -34,7 +29,7 @@ export default function UserMenuProfile({ name, username, size = 1, signIn, sign
                     <span
                         className={cn(styles.skeleton, styles.wrapper)}
                     >
-                        {name || username || 'REGISTER'}
+                        {username || 'REGISTER'}
                     </span>
                 </p>
                 <p className={styles.username}>

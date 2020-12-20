@@ -20,8 +20,6 @@ import { SkipNavContent } from '@reach/skip-nav';
 import Page from '@components/page';
 import ConfContent from '@components/index';
 import { META_DESCRIPTION } from '@lib/constants';
-import { signIn, signOut, useSession } from 'next-auth/client';
-
 
 export default function Conf() {
   const { query } = useRouter();
@@ -39,7 +37,6 @@ export default function Conf() {
     name: query.name?.toString(),
     username: query.username?.toString()
   };
-  const [session, loading] = useSession()
 
   return (
     <Page meta={meta} fullViewport>
@@ -47,9 +44,6 @@ export default function Conf() {
       <ConfContent
         defaultUserData={defaultUserData}
         defaultPageState={query.ticketNumber ? 'ticket' : 'registration'}
-        passingSignInHandler={() => signIn('okta')}
-        passingSignOutHandler={() => signOut()}
-        userName={ session ? session.user.name : ''}
       />
     </Page>
   );

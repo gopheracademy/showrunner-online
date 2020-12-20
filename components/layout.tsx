@@ -26,20 +26,19 @@ import Footer from './footer';
 import ViewSource from '@components/view-source';
 
 import UserMenuModule from './user-menu';
+import {signIn, signOut, useSession} from "next-auth/client";
 
 type Props = {
   children: React.ReactNode;
   className?: string;
   hideNav?: boolean;
   layoutStyles?: any;
-  userName?: string;
-  passingSignInHandler?: boolean;
-  passingSignOutHandler?: boolean;
 };
 
-export default function Layout({ children, className, hideNav, layoutStyles, userName, passingSignInHandler, passingSignOutHandler }: Props) {
+export default function Layout({ children, className, hideNav, layoutStyles }: Props) {
   const router = useRouter();
   const activeRoute = router.asPath;
+  const [session, loading] = useSession()
 
   return (
     <>
@@ -70,9 +69,9 @@ export default function Layout({ children, className, hideNav, layoutStyles, use
             </div>
             <div className={cn(styles['header-right'])}>
               <UserMenuModule
-                  username={userName}
-                  signIn={passingSignInHandler}
-                  signOut={passingSignOutHandler}
+                  username={(session === null || session === undefined) ? '' : session.user.name!}
+                  signInHandler={() => signIn('okta')}
+                  signOutHandler={() => signOut()}
               />
             </div>
           </header>

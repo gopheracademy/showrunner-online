@@ -27,18 +27,12 @@ type Props = {
   defaultUserData: UserData;
   sharePage?: boolean;
   defaultPageState?: PageState;
-  passingLogInHandler?: boolean;
-  passingSignOutHandler?: boolean;
-  userName?: string;
 };
 
 export default function Conf({
   defaultUserData,
   sharePage,
   defaultPageState = 'registration',
-  passingSignInHandler,
-  passingSignOutHandler,
-  userName,
 }: Props) {
   const [userData, setUserData] = useState<UserData>(defaultUserData);
   const [pageState, setPageState] = useState<PageState>(defaultPageState);
@@ -51,11 +45,7 @@ export default function Conf({
         setPageState
       }}
     >
-      <Layout
-          userName={userName}
-          passingSignInHandler={passingSignInHandler}
-          passingSignOutHandler={passingSignOutHandler}
-      >
+      <Layout>
         <ConfContainer>
           {pageState === 'registration' && !sharePage ? (
             <>
