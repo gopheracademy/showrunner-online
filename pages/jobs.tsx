@@ -48,7 +48,7 @@ export default function Jobs({ jobs }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   //const jobs = await getAllJobs();
-  const client = new Client();
+  const client = new Client("production");
   const { Jobs } = await client.conferences.ListJobs();
   console.log(Jobs);
   const jobs = Jobs
@@ -56,6 +56,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     props: {
       jobs
     },
-    revalidate: 60
+    revalidate: 1
   };
 };
