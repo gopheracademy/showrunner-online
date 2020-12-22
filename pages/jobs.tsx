@@ -48,7 +48,7 @@ export default function Jobs({ jobs }: Props) {
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   //const jobs = await getAllJobs();
-  const client = new Client("local");
+  const client = new Client("dev");
   const { Jobs } = await client.conferences.ListJobs();
   console.log(Jobs);
   const jobs = Jobs
