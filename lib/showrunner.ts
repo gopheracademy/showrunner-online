@@ -507,7 +507,7 @@ class BaseClient {
         if (environment === "local") {
             this.baseURL = "http://localhost:4060/"
         } else {
-            this.baseURL = `https://showrunner-46b2.encoreapi.com/${environment}/`
+            this.baseURL = `https://showrunner-46b2.encoreapi.com/dev/`
         }
     }
 
