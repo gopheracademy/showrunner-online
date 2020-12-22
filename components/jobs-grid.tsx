@@ -17,26 +17,28 @@
 import { Job } from '@lib/types';
 import styles from './jobs-grid.module.css';
 
-type Props = {
-  jobs: Job[];
-};
 
+import { conferences } from '@lib/showrunner';
+
+type Props = {
+  jobs: conferences.Job[];
+};
 function CompanyJobs({ jobs }: Props) {
   return (
     <div className={styles.grid}>
       {jobs.map(job => (
         <a
-          key={job.id}
+          key={job.ID}
           className={styles.card}
-          href={job.link}
+          href={job.Link}
           target="_blank"
           rel="noopener noreferrer"
         >
           <div className={styles.cardBody}>
             <div>
-              <h3 className={styles.title}>{job.title}</h3>
-              <p className={styles.company}>{job.companyName}</p>
-              <p className={styles.description}>{job.description}</p>
+              <h3 className={styles.title}>{job.Title}</h3>
+              <p className={styles.company}>{job.CompanyName}</p>
+              <p className={styles.description}>{job.Description}</p>
             </div>
             <p className={styles.link}>
               Learn More
@@ -66,7 +68,7 @@ function CompanyJobs({ jobs }: Props) {
 
 export default function JobsGrid({ jobs }: Props) {
   const companies = jobs.reduce((allCompanies: any, job) => {
-    allCompanies[job.companyName] = [...(allCompanies[job.companyName] || []), job];
+    allCompanies[job.CompanyName] = [...(allCompanies[job.CompanyName] || []), job];
     return allCompanies;
   }, {});
 

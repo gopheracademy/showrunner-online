@@ -24,9 +24,10 @@ import Header from '@components/header';
 import { getAllJobs } from '@lib/cms-api';
 import { Job } from '@lib/types';
 import { META_DESCRIPTION } from '@lib/constants';
+import Client, { conferences } from '@lib/showrunner';
 
 type Props = {
-  jobs: Job[];
+  jobs: conferences.Job[];
 };
 
 export default function Jobs({ jobs }: Props) {
@@ -46,8 +47,11 @@ export default function Jobs({ jobs }: Props) {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const jobs = await getAllJobs();
-
+  //const jobs = await getAllJobs();
+  const client = new Client("local");
+  const { Jobs } = await client.conferences.ListJobs();
+  console.log(Jobs);
+  const jobs = Jobs
   return {
     props: {
       jobs

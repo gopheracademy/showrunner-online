@@ -23,10 +23,9 @@ import styles from './layout.module.css';
 import Logo from './icons/icon-logo';
 import MobileMenu from './mobile-menu';
 import Footer from './footer';
-import ViewSource from '@components/view-source';
 
 import UserMenuModule from './user-menu';
-import {signIn, signOut, useSession} from "next-auth/client";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 type Props = {
   children: React.ReactNode;
@@ -40,6 +39,7 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
   const activeRoute = router.asPath;
   const [session, loading] = useSession()
 
+  console.log(session);
   return (
     <>
       <div className={styles.background}>
@@ -69,9 +69,9 @@ export default function Layout({ children, className, hideNav, layoutStyles }: P
             </div>
             <div className={cn(styles['header-right'])}>
               <UserMenuModule
-                  username={(session === null || session === undefined) ? '' : session.user.name!}
-                  signInHandler={() => signIn('okta')}
-                  signOutHandler={() => signOut()}
+                username={(session === null || session === undefined) ? '' : session.user.name!}
+                signInHandler={() => signIn('okta')}
+                signOutHandler={() => signOut()}
               />
             </div>
           </header>
